@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataViz Viva Examiner</title>
+    <style>
+        body{
+            margin: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+        }
+        .chat_box{
+            padding: 10px;
+            border-width: 2px;
+            border-style: solid;
+            text-align: left;
+            border-radius: 8px;
+            border-color: black;
+            line-height: 1.8;
+            
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        <p style="font-size: 3vh;">DataViz Viva Examiner</p>
+        <div class="chat_box">
+           <p>Hello {{name}},Shall we start the viva?</p> <br><br>
+           <input type="text" placeholder="Type your answer...">
+           <input type="submit" value="send">
+        </div>
+    </div>
+</body>
+</html>
