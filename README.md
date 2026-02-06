@@ -1,7 +1,7 @@
 # DataViz Viva Examiner 
 
 A Flask-based web application designed to act as a **Viva Examiner for Data Visualization concepts**.  
-The project provides a simple login interface and a chat-style UI where users can interact with the system.
+The project provides a simple login interface and a chat-style UI where users can interact with the system for a viva simulation.
 
 ---
 
@@ -13,7 +13,7 @@ The project provides a simple login interface and a chat-style UI where users ca
 ---
 
 ##  Technologies Used
-- Python
+- Python, Javascript
 - Flask
 - HTML
 - CSS
@@ -27,6 +27,7 @@ Viva_examiner/
 ├── templates/
 │ ├── login.html
 │ └── chat.html
+├── syllabus.pdf
 ├──README.md
 
 ---
@@ -39,8 +40,11 @@ Viva_examiner/
 2. Navigate to the project folder:
    cd DataViz-Viva-Examiner
 
-3. Install Flask:
+3. Install: Flask, google-genai, pypdf
   pip install flask
+  pip install google-genai
+  pip install pypdf
+
 
 4. Run the application:
    python app.py
