@@ -11,28 +11,72 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 50vh;
+            height: 100vh;
+            font-family: Arial, sans-serif;
         }
         .chat_box{
             padding: 10px;
-            border-width: 2px;
-            border-style: solid;
+            border: 2px solid black;
             text-align: left;
             border-radius: 8px;
-            border-color: black;
             line-height: 1.8;
-            
+            width: 450px;          
+            height: 350px;         
+            overflow-y: auto;      
+        }
+        .input_area{
+            margin-top: 10px;
+            text-align: center;
+        }
+        input{
+            width: 70%;
+            padding: 6px;
+        }
+        button{
+            padding: 6px 10px;
         }
     </style>
 </head>
 <body>
     <div> 
         <p style="font-size: 3vh;">DataViz Viva Examiner</p>
-        <div class="chat_box">
-           <p>Hello {{name}},Shall we start the viva?</p> <br><br>
-           <input type="text" placeholder="Type your answer...">
-           <input type="submit" value="send">
+
+        
+        <div class="chat_box" id="chat-box">
+            <p><b>Examiner:</b> Hello {{name}}, shall we start the viva?</p>
+        </div>
+
+        
+        <div class="input_area">
+            <input type="text" id="user-input" placeholder="Type your answer...">
+            <button onclick="sendMessage()">Send</button>
         </div>
     </div>
+
+<script>
+async function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatBox = document.getElementById("chat-box");
+  chatBox.innerHTML += `<p><b>You:</b> ${message}</p>`;
+
+  input.value = "";
+
+  const response = await fetch("/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await response.json();
+
+  chatBox.innerHTML += `<p><b>Examiner:</b> ${data.reply}</p>`;
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script>
+
+
 </body>
 </html>
